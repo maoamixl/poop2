@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我拉屎啦 - 健康记录助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💩 我拉屎啦</h1>
+            <div class="user-info">
+                <h2>欢迎回来</h2>
+                <p>您的用户ID：<span id="userId">--</span></p>
+                <div class="share-section">
+                    <h3>分享链接</h3>
+                    <div class="share-container">
+                        <input type="text" id="shareLink" readonly>
+                        <button class="btn btn-secondary" onclick="poopTracker.copyShareLink()">复制链接</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="record-section">
+                <h3>📝 今日记录</h3>
+                <form id="recordForm">
+                    <div class="form-group">
+                        <label for="time">时间：</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="smoothness">通畅情况：</label>
+                        <select id="smoothness" name="smoothness" required>
+                            <option value="">请选择</option>
+                            <option value="very_smooth">非常通畅</option>
+                            <option value="smooth">通畅</option>
+                            <option value="normal">正常</option>
+                            <option value="difficult">困难</option>
+                            <option value="very_difficult">非常困难</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">记录拉屎</button>
+                </form>
+            </section>
+
+            <section class="stats-section">
+                <h3>📊 统计数据</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>今日次数</h4>
+                        <p id="todayCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>本周次数</h4>
+                        <p id="weekCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>本月次数</h4>
+                        <p id="monthCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>平均通畅度</h4>
+                        <p id="avgSmoothness">--</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="history-section">
+                <h3>📋 最近记录</h3>
+                <div id="historyList"></div>
+            </section>
+
+            <section class="friends-section">
+                <h3>👥 好友互动</h3>
+                <div class="add-friend">
+                    <h4>添加好友</h4>
+                    <div class="add-friend-form">
+                        <input type="text" id="friendId" placeholder="输入好友ID">
+                        <input type="text" id="friendName" placeholder="输入好友昵称">
+                        <button class="btn btn-primary" onclick="poopTracker.addFriend()">添加好友</button>
+                    </div>
+                </div>
+                <div class="friends-grid" id="friendsGrid"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
